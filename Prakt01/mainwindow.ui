@@ -22,20 +22,59 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <layout class="QFormLayout" name="formLayout">
-      <item row="0" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
        <widget class="QGroupBox" name="GroupControls">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="title">
          <string>Controls</string>
         </property>
         <layout class="QGridLayout" name="gridLayout">
-         <item row="2" column="0">
-          <widget class="QLabel" name="FieldOfView_Label">
-           <property name="text">
-            <string>Field of view</string>
+         <item row="7" column="0" colspan="2">
+          <widget class="QGroupBox" name="groupBox">
+           <property name="title">
+            <string>Projection Mode</string>
            </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
+           <layout class="QVBoxLayout" name="verticalLayout">
+            <item>
+             <widget class="QRadioButton" name="projection_Radio_Persp">
+              <property name="text">
+               <string>Perspective</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="projection_Radio_Orth">
+              <property name="text">
+               <string>Orthogonal</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QSpinBox" name="angle_Spinbox">
+           <property name="maximum">
+            <number>360</number>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QSpinBox" name="fov_Spinbox">
+           <property name="minimum">
+            <number>45</number>
+           </property>
+           <property name="maximum">
+            <number>180</number>
            </property>
           </widget>
          </item>
@@ -46,43 +85,13 @@
            </property>
           </widget>
          </item>
-         <item row="7" column="0" colspan="2">
-          <widget class="QGroupBox" name="groupBox">
-           <property name="title">
-            <string>Projection Mode</string>
-           </property>
-           <layout class="QVBoxLayout" name="verticalLayout">
-            <item>
-             <widget class="QRadioButton" name="radioButton">
-              <property name="text">
-               <string>Perspective</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QRadioButton" name="radioButton_2">
-              <property name="text">
-               <string>Orthogonal</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item row="5" column="1">
-          <widget class="QSlider" name="verticalSlider">
+         <item row="6" column="1">
+          <widget class="QSlider" name="angle_Slider">
            <property name="maximum">
             <number>360</number>
            </property>
            <property name="orientation">
             <enum>Qt::Vertical</enum>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QSpinBox" name="spinBox">
-           <property name="maximum">
-            <number>360</number>
            </property>
           </widget>
          </item>
@@ -107,21 +116,21 @@
              </widget>
             </item>
             <item row="2" column="1">
-             <widget class="QSlider" name="horizontalSlider_2">
+             <widget class="QSlider" name="rotation_B_Slider">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
              </widget>
             </item>
             <item row="4" column="1">
-             <widget class="QSlider" name="horizontalSlider_3">
+             <widget class="QSlider" name="rotation_C_Slider">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QSlider" name="horizontalSlider">
+             <widget class="QSlider" name="rotation_A_Slider">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
@@ -137,19 +146,6 @@
            </layout>
           </widget>
          </item>
-         <item row="5" column="0" rowspan="2">
-          <widget class="QSlider" name="verticalSlider_2">
-           <property name="minimum">
-            <number>45</number>
-           </property>
-           <property name="maximum">
-            <number>180</number>
-           </property>
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-          </widget>
-         </item>
          <item row="10" column="0" colspan="2">
           <widget class="QGroupBox" name="groupBox_3">
            <property name="title">
@@ -163,7 +159,7 @@
               </property>
              </widget>
             </item>
-            <item row="3" column="0">
+            <item row="4" column="0">
              <widget class="QLabel" name="label_6">
               <property name="text">
                <string>Far</string>
@@ -171,12 +167,30 @@
              </widget>
             </item>
             <item row="1" column="1">
-             <widget class="QSpinBox" name="spinBox_3"/>
+             <widget class="QDoubleSpinBox" name="near_Spinbox">
+              <property name="value">
+               <double>0.000000000000000</double>
+              </property>
+             </widget>
             </item>
-            <item row="3" column="1">
-             <widget class="QSpinBox" name="spinBox_4"/>
+            <item row="4" column="1">
+             <widget class="QDoubleSpinBox" name="far_SpinBox">
+              <property name="value">
+               <double>2.000000000000000</double>
+              </property>
+             </widget>
             </item>
            </layout>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="FieldOfView_Label">
+           <property name="text">
+            <string>Field of view</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
           </widget>
          </item>
          <item row="2" column="1">
@@ -189,21 +203,24 @@
            </property>
           </widget>
          </item>
-         <item row="3" column="0">
-          <widget class="QSpinBox" name="spinBox_2">
+         <item row="5" column="0" rowspan="2">
+          <widget class="QSlider" name="fov_Slider">
            <property name="minimum">
             <number>45</number>
            </property>
            <property name="maximum">
             <number>180</number>
            </property>
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
           </widget>
          </item>
         </layout>
        </widget>
       </item>
-      <item row="0" column="1">
-       <widget class="QOpenGLWidget" name="openGLWidget">
+      <item>
+       <widget class="MyGLWidget" name="myOpenGLWidget">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
           <horstretch>0</horstretch>
@@ -212,8 +229,8 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>0</width>
-          <height>480</height>
+          <width>480</width>
+          <height>0</height>
          </size>
         </property>
        </widget>
@@ -224,12 +241,19 @@
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>MyGLWidget</class>
+   <extends>QOpenGLWidget</extends>
+   <header>myglwidget.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>
-   <sender>spinBox</sender>
+   <sender>angle_Spinbox</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>verticalSlider</receiver>
+   <receiver>angle_Slider</receiver>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -243,9 +267,9 @@
    </hints>
   </connection>
   <connection>
-   <sender>verticalSlider</sender>
+   <sender>angle_Slider</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>spinBox</receiver>
+   <receiver>angle_Spinbox</receiver>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -259,9 +283,9 @@
    </hints>
   </connection>
   <connection>
-   <sender>spinBox_2</sender>
+   <sender>fov_Spinbox</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>verticalSlider_2</receiver>
+   <receiver>fov_Slider</receiver>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -275,9 +299,9 @@
    </hints>
   </connection>
   <connection>
-   <sender>verticalSlider_2</sender>
+   <sender>fov_Slider</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>spinBox_2</receiver>
+   <receiver>fov_Spinbox</receiver>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">

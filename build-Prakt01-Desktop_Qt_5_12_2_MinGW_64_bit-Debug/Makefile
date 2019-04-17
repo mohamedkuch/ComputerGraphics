@@ -232,6 +232,7 @@ Makefile: ../Prakt01/Prakt01.pro C:/Qt/5.12.2/mingw73_64/mkspecs/win32-g++/qmake
 		C:/Qt/5.12.2/mingw73_64/mkspecs/features/yacc.prf \
 		C:/Qt/5.12.2/mingw73_64/mkspecs/features/lex.prf \
 		../Prakt01/Prakt01.pro \
+		C:/Qt/5.12.2/mingw73_64/lib/Qt5OpenGL.prl \
 		C:/Qt/5.12.2/mingw73_64/lib/Qt5Widgets.prl \
 		C:/Qt/5.12.2/mingw73_64/lib/Qt5Gui.prl \
 		C:/Qt/5.12.2/mingw73_64/lib/Qt5Core.prl \
@@ -406,6 +407,7 @@ C:/Qt/5.12.2/mingw73_64/mkspecs/features/exceptions.prf:
 C:/Qt/5.12.2/mingw73_64/mkspecs/features/yacc.prf:
 C:/Qt/5.12.2/mingw73_64/mkspecs/features/lex.prf:
 ../Prakt01/Prakt01.pro:
+C:/Qt/5.12.2/mingw73_64/lib/Qt5OpenGL.prl:
 C:/Qt/5.12.2/mingw73_64/lib/Qt5Widgets.prl:
 C:/Qt/5.12.2/mingw73_64/lib/Qt5Gui.prl:
 C:/Qt/5.12.2/mingw73_64/lib/Qt5Core.prl:
