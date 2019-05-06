@@ -235,11 +235,8 @@ public:
 
         myOpenGLWidget = new MyGLWidget(centralWidget);
         myOpenGLWidget->setObjectName(QString::fromUtf8("myOpenGLWidget"));
-        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(myOpenGLWidget->sizePolicy().hasHeightForWidth());
-        myOpenGLWidget->setSizePolicy(sizePolicy2);
+        sizePolicy.setHeightForWidth(myOpenGLWidget->sizePolicy().hasHeightForWidth());
+        myOpenGLWidget->setSizePolicy(sizePolicy);
         myOpenGLWidget->setMinimumSize(QSize(480, 0));
 
         horizontalLayout_2->addWidget(myOpenGLWidget);

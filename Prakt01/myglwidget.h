@@ -5,20 +5,29 @@
 #include <QObject>
 #include <QVector3D>
 #include <iostream>
+#include <QColor>
 #include <QOpenGLFunctions>
-
-class MyGLWidget : public QOpenGLWidget, public QOpenGLFunctions
+#include <QOpenGLShaderProgram>
+#include <QOpenGLFunctions_4_5_Core>
+class MyGLWidget : public QOpenGLWidget, QOpenGLFunctions_4_5_Core
 {
     Q_OBJECT
 private :
+    QOpenGLShaderProgram *mp_Program;
+    GLuint m_vbo;
+    GLuint m_vao;
+
     int m_FOV, m_Angle, m_Rot_A, m_Rot_B, m_Rot_C;
     double m_Near, m_Far;
     //1: perspective 0: orthogonal
     bool m_projectionmode = true;
     QVector3D cameraPosition;
 
+
 public:
-    MyGLWidget(QWidget *parent = nullptr);
+    MyGLWidget(QWidget *parent );
+    ~MyGLWidget();
+     void reset();
 
 public slots:
     void setFOV(int value);
@@ -40,10 +49,9 @@ signals: void nearHaveToChange(double value);
          void nearChanged(double value);
          void farChanged(double value);
 protected:
-    void initializeGL() override;
-    void resizeGL(int w, int h) override;
-    void paintGL() override;
-
+     void initializeGL() ;
+     void resizeGL(int w, int h) ;
+     void paintGL() ;
 
 };
 

@@ -12,6 +12,20 @@ MyGLWidget::MyGLWidget(QWidget *parent) : QOpenGLWidget(parent)
 
     setFocusPolicy(Qt::StrongFocus);
 }
+void MyGLWidget::reset(){
+    m_FOV = 45;
+    m_Angle = 0;
+    m_Far = 2;
+    m_Near = 0;
+    m_Rot_A= 0;
+    m_Rot_B= 0;
+    m_Rot_C= 0;
+}
+
+MyGLWidget::~MyGLWidget(){
+    delete mp_Program;
+
+}
 void MyGLWidget::setFOV(int value)
 {
     if (value != m_FOV)
@@ -81,7 +95,7 @@ void MyGLWidget::setProjectionMode(){
 void MyGLWidget::correctNear(){
 
     std::cout<<"Difference between parameters Far and Near are smaller than 2.0!" << std::endl;
-    m_Near=m_Far+2;
+    m_Near=m_Far-2;
     std::cout<<m_Near<< std::endl;
     std::cout<<m_Far<< std::endl;
     emit nearChanged(m_Near);
@@ -98,38 +112,60 @@ void MyGLWidget::correctFar(){
 
 void MyGLWidget::keyPressEvent(QKeyEvent *event)
 {
-    if (event->key() == Qt::Key_W|| event->key() == Qt::Key_Up) {
+    if (event->key() == Qt::Key_Z|| event->key() == Qt::Key_Up) {
         cameraPosition.setZ(cameraPosition.z()+0.2f);
-        std::cout<< "X: "<< cameraPosition.x() << "Z: " << cameraPosition.z() << std::endl;
+        std::cout<< "X: "<< cameraPosition.x() << " / Z: " << cameraPosition.z() << std::endl;
     }
     if (event->key() == Qt::Key_S|| event->key() == Qt::Key_Down) {
         cameraPosition.setZ(cameraPosition.z()-0.2f);
-        std::cout<< "X: "<< cameraPosition.x() << "Z: " << cameraPosition.z() << std::endl;
+        std::cout<< "X: "<< cameraPosition.x() << " / Z: " << cameraPosition.z() << std::endl;
     }
-    if (event->key() == Qt::Key_A|| event->key() == Qt::Key_Left) {
+    if (event->key() == Qt::Key_D|| event->key() == Qt::Key_Left) {
         cameraPosition.setX(cameraPosition.x()+0.2f);
-        std::cout<< "X: "<< cameraPosition.x() << "Z: " << cameraPosition.z() << std::endl;
+        std::cout<< "X: "<< cameraPosition.x() << " / Z: " << cameraPosition.z() << std::endl;
     }
-    if (event->key() == Qt::Key_D|| event->key() == Qt::Key_Right) {
+    if (event->key() == Qt::Key_Q|| event->key() == Qt::Key_Right) {
         cameraPosition.setX(cameraPosition.x()-0.2f);
-        std::cout<< "X: "<< cameraPosition.x() << "Z: " << cameraPosition.z()<< std::endl;
+        std::cout<< "X: "<< cameraPosition.x() << " / Z: " << cameraPosition.z()<< std::endl;
     }
 
 }
+
 
 void MyGLWidget::initializeGL() {
-    // Set up the rendering context, load shaders and other resources, etc.:
+    // INITIALISIERUNG
     QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
-    f->glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+    f->glClearColor(0.1f, 0.5f, 0.4f, 1.0f);
+
+
+
+    GLfloat vert[] = {
+        -0.5, -0.5,
+        0.5, -0.5,
+        0.0, 0.5
+    };
+    //glGenVertexArrays(1, &m_vao);
+  //  glBindVertexArray(m_vao);
+    //mp_Program->bind();
+   // glGenBuffers(1, &m_vbo);
+    //glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
+    //
+    //glBufferData(GL_ARRAY_BUFFER, sizeof(vert), vert, GL_STATIC_DRAW);
+}
+
+void MyGLWidget::paintGL() {
+
+
+
+
+    // starting at vertex 0, render 3 vertices (=> 1 triangle)
+    //glDrawArrays(GL_TRIANGLES, 0, 3);
 
 }
+
+
 void MyGLWidget::resizeGL(int w, int h) {
     // Update projection matrix and other size related settings:
 
 }
 
-void MyGLWidget::paintGL(){
-    // Draw the scene:
-    QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
-
-}

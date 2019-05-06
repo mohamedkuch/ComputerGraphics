@@ -222,7 +222,7 @@
       <item>
        <widget class="MyGLWidget" name="myOpenGLWidget">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -306,7 +306,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>41</x>
-     <y>169</y>
+     <y>168</y>
     </hint>
     <hint type="destinationlabel">
      <x>79</x>
